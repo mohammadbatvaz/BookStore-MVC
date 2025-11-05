@@ -1,0 +1,492 @@
+﻿@font-face {
+    font-family: "Vazir-Thin";
+    src: url("../font/Vazir-Thin.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Vazir-Light";
+    src: url("../font/Vazir-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Vazir";
+    src: url("../font/Vazir.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Vazir-Medium";
+    src: url("../font/Vazir-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Vazir-Bold";
+    src: url("../font/Vazir-Bold.ttf") format("truetype");
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #edf1f5;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+}
+
+.content {
+    padding-bottom: 100px; /* فضای خالی برای فوتر */
+    box-sizing: border-box;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.navbar {
+    font-family: vazir, sans-serif;
+    font-size: clamp(12px, 5vw, 16px);
+    background-color: #ffffff;
+    box-shadow: 0px 0px 15px 1px #adb4bb;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+.navbar-options-bar {
+    display: flex;
+    gap: 20px;
+}
+
+.login-button-bar, .Add-Book-button-bar {
+    color: #ffffff;
+    padding: 5px 15px;
+    border-radius: 10px;
+}
+
+.login-button-bar {
+    background-color: #1e40af;
+}
+
+.Add-Book-button-bar {
+    background-color: #af1e62;
+}
+
+.main-banner-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-banner {
+    background: linear-gradient(to right, #3b82f6, #1e41b0);
+    color: #ffffff;
+    box-shadow: 0px 10px 30px 2px #afbbc5;
+    text-align: center;
+    width: 90%;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 20px;
+    margin-top: 50px;
+}
+
+.main-banner-button {
+    font-family: vazir-Medium;
+    margin-top: 50px;
+    background-color: #ffffff;
+    color: #1e40af;
+    padding: 10px 40px;
+    border-radius: 10px;
+}
+
+.main-banner-h1 {
+    font-family: vazir;
+    font-size: 3.5vw;
+    margin: 0;
+}
+
+.main-banner-p {
+    font-family: vazir-Thin;
+    font-size: 1vw;
+    margin: 0;
+}
+
+.category-h1 {
+    font-family: vazir-Medium;
+    font-size: 1vw;
+    text-align: center;
+    margin-top: 50px;
+    color: #3c404e;
+}
+
+.categories-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.category-card {
+    background-color: #ffffff;
+    width: 300px;
+    height: 150px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 1px #adb4bb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.category-card-emoji, .category-card-h2, .category-card-h3 {
+    text-align: center;
+    font-family: vazir;
+    margin: 5px;
+}
+
+.category-card-emoji {
+    font-size: 24px;
+}
+
+.category-card-h2 {
+    font-size: 24px;
+}
+
+.category-card-h3 {
+    font-family: Vazir-Thin;
+    font-size: 14px;
+}
+
+.new-books-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.new-book-card {
+    background-color: #ffffff;
+    width: 220px;
+    height: 410px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 1px #adb4bb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.new-book-card-img {
+    width: 180px;
+    height: 280px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.new-book-card-h2, .new-book-card-h3, .new-book-card-h4 {
+    font-family: vazir;
+    margin: 2px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.new-book-card-h2 {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.new-book-card-h3 {
+    font-size: 14px;
+    color: #555b6e;
+}
+
+.new-book-card-h4 {
+    font-size: 12px;
+    color: #888f9b;
+}
+
+h5 {
+    margin: 0;
+    font-family: vazir-Medium;
+    font-size: 16px;
+    color: #f31c1c;
+}
+
+.footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #2b3452;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.footer-h2 {
+    font-family: vazir;
+    margin: 5px;
+}
+
+.footer-p {
+    font-family: vazir-Thin;
+    margin: 5px;
+}
+
+
+.add-book-body {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px #adb4bb;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.add-book-h1 {
+    font-family: vazir-Medium;
+    font-size: 2vw;
+    text-align: center;
+    color: #3c404e;
+}
+
+.add-book-form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    gap: 25px;
+}
+
+.add-book-label {
+    font-family: vazir-Medium;
+    font-size: 1vw;
+    color: #3c404e;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.add-book-input, .add-book-textarea {
+    font-family: vazir;
+    font-size: 1vw;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.add-book-button {
+    font-family: vazir-Medium;
+    background-color: #1e40af;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.pagination {
+    font-family: vazir, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    align-items: center;
+    user-select: none;
+}
+
+.pagination__ctrl {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(20,30,60,0.04);
+    border: 1px solid rgba(30,40,80,0.03);
+    text-decoration: none;
+    color: #374151;
+    font-weight: 600;
+    margin: 20px;
+}
+
+.login-form-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px #adb4bb;
+    width: 400px;
+    margin: 100px auto;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-form-h2 {
+    font-family: vazir-Medium;
+    text-align: center;
+    color: #3c404e;
+    margin: 0;
+}
+
+.login-form-label {
+    font-family: vazir-Medium;
+    color: #3c404e;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.login-form-input {
+    font-family: vazir;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-button-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.login-form-button {
+    font-family: vazir-Medium;
+    background-color: #1e40af;
+    border: 1px solid #1e40af;
+    color: #ffffff;
+    width: 70%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.SignUp-form-button {
+    font-family: vazir-Medium;
+    background-color: #ffffff;
+    border: 1px solid #af1e62;
+    color: #af1e62;
+    width: 15%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.form-error-message {
+    font-family: vazir;
+    color: #f31c1c;
+    margin: 0;
+    padding-top: 25px;
+    text-align: center;
+}
+
+.form-Success-message {
+    font-family: vazir;
+    color: #28a745;
+    margin: 0;
+    padding-top: 25px;
+    text-align: center;
+}
+
+
+/* Registration Page Styles */
+
+.Registration-form-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px #adb4bb;
+    width: 400px;
+    margin: 50px auto;
+    margin-bottom: 10px;
+}
+
+.Registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.Registration-form-h2 {
+    font-family: vazir-Medium;
+    text-align: center;
+    color: #3c404e;
+    margin: 0;
+}
+
+.Registration-form-label {
+    font-family: vazir-Medium;
+    color: #3c404e;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.Registration-form-input {
+    font-family: vazir;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.Registration-form-label-img {
+    font-family: vazir-Medium;
+    color: #3c404e;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Registration-form-input-img {
+    font-family: vazir;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    border-radius: 5px;
+    width: 70%;
+    cursor: pointer;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+.Registration-form-button {
+    font-family: vazir-Medium;
+    background-color: #af1e62;
+    border: 1px solid #af1e62;
+    color: #ffffff;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* End of Registration Page Styles */

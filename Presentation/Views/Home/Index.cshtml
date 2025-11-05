@@ -1,0 +1,45 @@
+﻿@model Domain.ViewModel.HomePageViewModel;
+
+@{
+    Layout = "_HomeLayout";
+}
+
+<div class="main-banner-body">
+    <div class="main-banner">
+        <h1 class="main-banner-h1">هر کتابی که میخواهی، اینجا هست</h1>
+        <p class="main-banner-p">
+            با بیش از 100.000 عنوان کتاب در دسته بندی های مختلف، سفر مطالعه خود را آغاز کنید.
+        </p>
+        <a href="#" class="main-banner-button">مشاهده پرفروش ها</a>
+    </div>
+</div>
+<div class="category-h1">
+    <h1>دسته بندی ها</h1>
+</div>
+<div class="categories-body">
+    @foreach (var c in Model.Categories)
+    {
+        <a href="#" class="category-card" style="background-color: @c.BackgroundColorHEX">
+            <p class="category-card-emoji">@c.EmojiIcon</p>
+            <h2 class="category-card-h2">@c.Title</h2>
+            <h3 class="category-card-h3">@c.Description</h3>
+        </a>
+    }
+</div>
+
+<div class="category-h1">
+    <h1>جدیدترین کتاب ها</h1>
+</div>
+<div class="new-books-body">
+    @{foreach (var b in Model.Books)
+        {
+            <a href="#" class="new-book-card">
+                <img src="@b.ImageUrl" class="new-book-card-img" alt="@b.Title">
+                <h2 class="new-book-card-h2">@b.Title</h2>
+                <h3 class="new-book-card-h3">@b.Author</h3>
+                <h4 class="new-book-card-h4">@b.PagesNumber صفحه</h4>
+                <h5 class="new-book-card-price">@String.Format("{0:N0}", b.Price) تومان</h5>
+            </a>
+        }
+    }
+</div>

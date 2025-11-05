@@ -1,0 +1,39 @@
+﻿@model Domain.Entities.Result<bool>
+
+@{
+    Layout = "_HomeLayout";
+}
+
+<div class="login-form-container">
+    <form
+        asp-controller="Authentication"
+        asp-action="Login"
+        class="login-form"
+        method="post">
+
+        <h2 class="login-form-h2">ورود به حساب کاربری</h2>
+
+        <label for="username" class="login-form-label">
+            <input type="text" name="username" class="login-form-input" placeholder="نام کاربری" required>
+        </label>
+
+        <label for="password" class="login-form-label">
+            <input type="password" name="password" class="login-form-input" placeholder="رمز عبور" required>
+        </label>
+
+        <div class="form-button-row">
+            <input type="submit" class="login-form-button" value="ورود"/>
+
+            <a asp-controller="Authentication" asp-action="Registration" class="SignUp-form-button" value="ثبت نام">ثبت نام</a>
+        </div>
+    </form>
+    @switch (Model.IsSuccess)
+    {
+        case false:
+            <p class="form-error-message">@Model.Message</p>
+            break;
+        case true:
+            <p class="form-Success-message">@Model.Message</p>
+            break;
+    }
+</div>

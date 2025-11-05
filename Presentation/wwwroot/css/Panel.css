@@ -1,0 +1,220 @@
+﻿@font-face {
+    font-family: "Vazir-Thin";
+    src: url("../font/Vazir-Thin.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Vazir-Light";
+    src: url("../font/Vazir-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Vazir";
+    src: url("../font/Vazir.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Vazir-Medium";
+    src: url("../font/Vazir-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Vazir-Bold";
+    src: url("../font/Vazir-Bold.ttf") format("truetype");
+}
+
+body {
+    margin: 0;
+    font-family: Vazir, sans-serif;
+    background-color: #f5f6fa;
+    display: flex;
+    height: 100vh;
+    color: #2f3542;
+}
+
+.sidebar {
+    width: 240px;
+    background: linear-gradient(to bottom, #1d89d1, #0e5686);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    padding: 15px 20px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.2s ease;
+}
+
+.sidebar li:hover {
+    background-color: #3d4353;
+}
+
+.sidebar li a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.username {
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+.footer-links a {
+    display: block;
+    color: #ccc;
+    text-decoration: none;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    color: #fff;
+}
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+}
+
+h1 {
+    margin-top: 0;
+    color: #2f3542;
+}
+
+
+.dashboard-box {
+    font-family: Vazir-Bold;
+    font-size: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 80vw;
+    height: 80vh;
+}
+
+
+/*Start User List Style*/
+
+.users-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.users-header h1 {
+    font-family: Vazir-Bold;
+    font-size: 28px;
+    color: #2f3542;
+}
+
+.btn-add-user {
+    padding: 8px 16px;
+    color: #3498db;
+    text-decoration: none;
+    border: 2px solid #3498db;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.btn-add-user:hover {
+    color: #ffffff;
+    background-color: #3498db;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+
+}
+
+.users-table th, .users-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+    font-family: Vazir;
+
+}
+
+.users-table th {
+    background-color: #cbd5de;
+    font-weight: bold;
+    color: #2f3542;
+    
+}
+
+.users-table td {
+    font-size: 14px;
+    }
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.status.active {
+    color: green;
+}
+
+.status.inactive {
+    color: red;
+}
+
+.actions a {
+    display: inline-block;
+    margin: 0 4px;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #fff;
+    transition: background-color 0.2s;
+}
+
+.btn-edit {
+    background-color: #3498db;
+}
+
+.btn-edit:hover {
+    background-color: #2980b9;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b;
+}
+
+.btn-toggle {
+    background-color: #f1c40f;
+    color: #2f3542;
+}
+
+.btn-toggle:hover {
+    background-color: #d4ac0d;
+}
+/*End User List style*/

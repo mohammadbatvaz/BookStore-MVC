@@ -1,0 +1,47 @@
+﻿@model Domain.Entities.Result<bool>
+@{
+    Layout = "_HomeLayout";
+}
+<div class="Registration-form-container">
+    <form class="Registration-form"
+          asp-controller="Authentication"
+          asp-action="Registration"
+          enctype="multipart/form-data"
+          method="post">
+
+        <h2 class="Registration-form-h2">ثبت نام کاربر جدید</h2>
+
+        <label for="FirstName" class="Registration-form-label">
+            <input type="text" name="FirstName" class="Registration-form-input" placeholder="نام" required>
+        </label>
+
+        <label for="LastName" class="Registration-form-label">
+            <input type="text" name="LastName" class="Registration-form-input" placeholder="نام خانوادگی" required>
+        </label>
+
+        <label for="UserName" class="Registration-form-label">
+            <input type="text" name="UserName" class="Registration-form-input" placeholder="نام کاربری" required>
+        </label>
+
+        <label for="Password" class="Registration-form-label">
+            <input type="password" name="Password" class="Registration-form-input" placeholder="رمز عبور" required>
+        </label>
+
+        <label for="Email" class="Registration-form-label">
+            <input type="text" name="Email" class="Registration-form-input" placeholder="ایمیل" required>
+        </label>
+        
+        <label class="Registration-form-label-img"> تصویر پروفایل:
+            <input name="ProfileImageFile" type="file" class="Registration-form-input-img" accept="image/*">
+        </label>
+        
+        <input type="submit" class="Registration-form-button" value="ثبت نام"/>
+
+    </form>
+
+    @if(!Model.IsSuccess)
+    {
+        <p class="form-error-message">@Model.Message</p>
+    }
+
+</div>

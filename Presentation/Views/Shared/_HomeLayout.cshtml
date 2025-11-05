@@ -1,0 +1,51 @@
+﻿@using Domain.Enums
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کتاب دونی</title>
+    <link rel="stylesheet" href="/css/HomePage.css">
+</head>
+<body>
+<nav class="navbar">
+    <div class="navbar-options-bar">
+        <div class="navbar-options"><a asp-controller="Home" asp-action="Index">صفحه اصلی</a></div>
+        <div class="navbar-options"><a href="#">فروشگاه</a></div>
+        <div class="navbar-options"><a href="#">دسته بندی</a></div>
+        <div class="navbar-options"><a href="#">نوشتارها</a></div>
+        <div class="navbar-options"><a href="#">درباره ما</a></div>
+        <div class="navbar-options"><a href="#">تماس با ما</a></div>
+    </div>
+    <div class="button-bar">
+        @if (ViewBag.UserFullName is null)
+        {
+            <a asp-controller="Authentication" asp-action="Login" class="login-button-bar">ورود</a>
+        }
+        else
+        {
+            if (ViewBag.Role == UserRoleEnum.Admin)
+            {
+                <a asp-controller="AdminPanel" asp-action="Dashboard" class="login-button-bar">پنل @ViewBag.UserFullName</a>
+            }
+            else
+            {
+                <a asp-controller="UserPanel" asp-action="Dashboard" class="login-button-bar">پنل @ViewBag.UserFullName</a>
+            }
+        }
+
+    </div>
+</nav>
+
+<main class="content">
+    @RenderBody()
+</main>
+
+<footer class="footer">
+    <h2 class="footer-h2">کتاب دونی | منبع آموزش و مطالعه</h2>
+    <p class="footer-p">طراحی شده برای تمرین HTML و CSS. تمامی حقوق این سایت متعلق به کتاب دونی می‌باشد.</p>
+</footer>
+
+@* @await RenderSectionAsync("Scripts", required: false) *@
+</body>
+</html>

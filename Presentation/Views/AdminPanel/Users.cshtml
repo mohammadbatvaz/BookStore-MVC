@@ -1,0 +1,93 @@
+﻿@using Domain.Enums
+@model List<Domain.DTOs.UserDataDTO>
+@{
+    Layout = "_PanelLayout";
+}
+<div class="sidebar">
+    <ul>
+        <li><a asp-controller="AdminPanel" asp-action="Dashboard">🏠 داشبورد</a></li>
+        <li><a href="/AdminPanel/Users">👥 مدیریت کاربران</a></li>
+        <li><a href="/AdminPanel/Categories">📂 مدیریت دسته‌بندی‌ها</a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+        <div class="username">کاربر: <strong>@ViewBag.FullName</strong></div>
+        <div class="footer-links">
+            <a asp-controller="Home" asp-action="Index">🛍 فروشگاه</a>
+            <a asp-controller="Authentication" asp-action="Logout">🚪 خروج</a>
+        </div>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="users-header">
+        <h1>لیست کاربران</h1>
+        <a href="/AdminPanel/AddUser" class="btn-add-user">افزودن کاربر</a>
+    </div>
+    @if(Model.Count == 0)
+    {
+        <div class="dashboard-box">
+            🤨
+            <br>
+            هیچ کاربری یافت نشد
+        </div>
+    }
+    else
+    {
+        <table class="users-table">
+            <thead>
+            <tr>
+                <th>تصویر</th>
+                <th>شناسه</th>
+                <th>نام</th>
+                <th>نام خانوادگی</th>
+                <th>ایمیل</th>
+                <th>نام کاربری</th>
+                <th>وضعیت</th>
+                <th>نقش</th>
+                <th>عملیات</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var u in Model)
+            {
+                <tr>
+                    <td><img src="@u.ProfileImageUrl" alt="پروفایل" class="profile-img"></td>
+                    <td>@u.Id</td>
+                    <td>@u.FirstName</td>
+                    <td>@u.LastName</td>
+                    <td>@u.Email</td>
+                    <td>@u.Username</td>
+                    @if (u.IsActive)
+                    {
+                        <td><span class="status active">فعال</span></td>
+                    }
+                    else
+                    {
+                        <td><span class="status inactive">غیرفعال</span></td>
+                    }
+
+                    @switch (u.Role)
+                    {
+                        case UserRoleEnum.Admin:
+                            <td>مدیر</td>
+                            break;
+                        case UserRoleEnum.User:
+                            <td>کاربر</td>
+                            break;
+                        case UserRoleEnum.None:
+                            <td>بدون نقش</td>
+                            break;
+                    }
+                    <td class="actions">
+                        <a href="/AdminPanel/EditUser/@u.Id" class="btn-edit">ویرایش</a>
+                        <a href="/AdminPanel/DeleteUser/@u.Id" class="btn-delete">حذف</a>
+                        <a href="/AdminPanel/ToggleStatus/@u.Id" class="btn-toggle">تغییر وضعیت</a>
+                    </td>
+
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+</div>
