@@ -1,14 +1,14 @@
 ﻿using Domain.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Domain.Entities;
 
 namespace Infrastructure.Interfaces
 {
     public interface IBookRepositories
     {
         List<BookSummaryInfoDTO> GetNewBooksSummaryInfoList(int numberOfBook);
+
+        List<BookInfoDTO> GetAllBookList();
+
+        bool AddNewBook(Book book, int adminId);
     }
 }

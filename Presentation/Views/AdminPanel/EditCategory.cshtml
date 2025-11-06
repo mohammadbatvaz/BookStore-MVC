@@ -1,0 +1,44 @@
+﻿@model Domain.Entities.Result<Domain.ViewModel.CategoryEditableInfoViewModel>
+@{
+    Layout = "_PanelLayout";
+}
+<div class="main-content">
+    <div class="users-header">
+        <h1>ویرایش دسته بندی</h1>
+    </div>
+    <div class="Registration-form-container">
+        <form class="Registration-form"
+              asp-controller="AdminPanel"
+              asp-action="EditCategory"
+              method="post">
+
+            <input type="hidden" asp-for="Data.Id" />
+
+            <label for="Title" class="Registration-form-label">
+                <input type="text" asp-for="Data.Title" class="Registration-form-input" required>
+            </label>
+
+            <label for="Description" class="Registration-form-label">
+                <input type="text" asp-for="Data.Description" class="Registration-form-input" required>
+            </label>
+
+            <label for="EmojiIcon" class="Registration-form-label">
+                <input type="text" asp-for="Data.EmojiIcon" class="Registration-form-input" required>
+            </label>
+            
+            <label for="BackgroundColorHEX" class="Registration-form-label">
+                رنگ پس‌زمینه:
+                <input type="color" asp-for="Data.BackgroundColorHEX" class="Registration-form-input" value="@Model.Data.BackgroundColorHEX" required>
+            </label>
+
+            <input type="submit" class="Registration-form-button" value="ویرایش" />
+
+        </form>
+
+        @if (!Model.IsSuccess)
+        {
+            <p class="form-error-message">@Model.Message</p>
+        }
+
+    </div>
+</div>

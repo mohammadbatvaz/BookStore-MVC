@@ -18,6 +18,6 @@ namespace Services.Interfaces
 
         UserDataDTO GetUserInfo(int id);
 
-        Result<string> EditUserInfo(UserEditedInfoDTO userNewInfo, int adminId);
+        Result<bool> EditUserInfo(UserEditedInfoDTO userNewInfo, int adminId);
     }
 }

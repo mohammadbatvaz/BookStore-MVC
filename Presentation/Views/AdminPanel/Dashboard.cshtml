@@ -1,21 +1,6 @@
 ﻿@{
     Layout = "_PanelLayout";
 }
-<div class="sidebar">
-    <ul>
-        <li><a asp-controller="AdminPanel" asp-action="Dashboard">🏠 داشبورد</a></li>
-        <li><a href="/AdminPanel/Users">👥 مدیریت کاربران</a></li>
-        <li><a href="/AdminPanel/Categories">📂 مدیریت دسته‌بندی‌ها</a></li>
-    </ul>
-
-    <div class="sidebar-footer">
-        <div class="username">کاربر: <strong>@ViewBag.FullName</strong></div>
-        <div class="footer-links">
-            <a asp-controller="Home" asp-action="Index">🛍 فروشگاه</a>
-            <a asp-controller="Authentication" asp-action="Logout">🚪 خروج</a>
-        </div>
-    </div>
-</div>
 
 <div class="main-content">
     <div class="dashboard-box">

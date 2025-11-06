@@ -21,7 +21,7 @@ namespace Presentation.Controllers
             var homePageData = new HomePageViewModel()
             {
                 Books = bookServices.GetNewBooksSummaryInfoList(NumberOfNewBooksDisplayed),
-                Categories = categoryServices.GetAllCategorySummaryInfo()
+                Categories = categoryServices.GetAllCategoryInfo()
             };
 
             ViewBag.UserFullName = OnlineUser.UserLoggedIn 

@@ -1,0 +1,52 @@
+﻿@model List<Domain.DTOs.BookInfoDTO>
+@{
+    Layout = "_PanelLayout";
+}
+<div class="main-content">
+    <div class="users-header">
+        <h1>لیست کاربران</h1>
+        <a asp-controller="AdminPanel" asp-action="AddNewBook" class="btn-add-user">افزودن کتاب</a>
+    </div>
+    @if (Model.Count == 0)
+    {
+        <div class="dashboard-box">
+            🤨
+            <br>
+            هیچ کتابی یافت نشد
+        </div>
+    }
+    else
+    {
+        <table class="users-table">
+            <thead>
+                <tr>
+                    <th>تصویر</th>
+                    <th>شناسه</th>
+                    <th>عنوان</th>
+                    <th>توضیحات</th>
+                    <th>دسته بندی</th>
+                    <th>نویسنده</th>
+                    <th>تعداد صفحه</th>
+                    <th>قیمت</th>
+                    <th>عملیات</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var b in Model)
+                {
+                    <tr>
+                        <td><img src="@b.ImageUrl" alt="تصویر جلد" class="profile-img"></td>
+                        <td>@b.Id</td>
+                        <td>@b.Title</td>
+                        <td>@b.Description</td>
+                        <td>@b.Category</td>
+                        <td>@b.Author</td>
+                        <td>@b.PagesNumber</td>
+                        <td>@String.Format("{0:N0}", b.Price) تومان</td>
+                        <td class="actions"></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

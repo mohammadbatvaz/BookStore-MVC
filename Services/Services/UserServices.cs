@@ -85,18 +85,18 @@ namespace Services.Services
             return _userRepo.GetUserInfoById(id);
         }
 
-        public Result<string> EditUserInfo(UserEditedInfoDTO userNewInfo, int adminId)
+        public Result<bool> EditUserInfo(UserEditedInfoDTO userNewInfo, int adminId)
         {
             long maxFileSize = 300 * 1024;
 
             if (userNewInfo.FirstName.Length > 100)
-                return Result<string>.Failure("نام شما نباید بیشتر از 100 کاراکتر باشد");
+                return Result<bool>.Failure("نام شما نباید بیشتر از 100 کاراکتر باشد");
             if (userNewInfo.LastName.Length > 100)
-                return Result<string>.Failure("نام خانوادگی شما نباید بیشتر از 100 کاراکتر باشد");
+                return Result<bool>.Failure("نام خانوادگی شما نباید بیشتر از 100 کاراکتر باشد");
             if (userNewInfo.Email.Length > 255)
-                return Result<string>.Failure("ایمیل شما نباید بیشتر از 255 کاراکتر باشد");
+                return Result<bool>.Failure("ایمیل شما نباید بیشتر از 255 کاراکتر باشد");
             if (userNewInfo.NewProfileImage is not null && userNewInfo.NewProfileImage.Length > maxFileSize)
-                return Result<string>.Failure("حجم تصویر پروفایل شما نباید بیشتر 300 کیلوبایت باشد");
+                return Result<bool>.Failure("حجم تصویر پروفایل شما نباید بیشتر 300 کیلوبایت باشد");
 
             if (userNewInfo.NewProfileImage is not null)
             {
@@ -107,7 +107,7 @@ namespace Services.Services
             }
 
             _userRepo.UpdateUser(userNewInfo, adminId);
-            return Result<string>.Success("اطلاعات با موفقیت بروز شد");
+            return Result<bool>.Success("اطلاعات با موفقیت بروز شد");
         }
     }
 }

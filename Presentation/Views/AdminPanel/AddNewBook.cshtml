@@ -1,0 +1,57 @@
+﻿@{
+    Layout = "_PanelLayout";
+}
+<div class="main-content">
+    <div class="users-header">
+        <h1>افزودن کتاب جدید</h1>
+    </div>
+    <div class="Registration-form-container">
+        <form class="Registration-form"
+              asp-controller="AdminPanel"
+              asp-action="AddNewBook"
+              enctype="multipart/form-data"
+              method="post">
+
+            <label for="Title" class="Registration-form-label">
+                <input type="text" name="Title" class="Registration-form-input" placeholder="عنوان کتاب" required>
+            </label>
+
+            <label for="Author" class="Registration-form-label">
+                <input type="text" name="Author" class="Registration-form-input" placeholder="نویسنده" required>
+            </label>
+            
+            <label class="Registration-form-label">دسته بندی:
+            @Html.DropDownList("CategoryId",
+                (SelectList)ViewBag.CategoryList,
+                "-- لطفاً انتخاب کنید --",
+                new { @class = "Registration-form-input",
+                    required = "required" })
+            </label>
+            
+            <label class="Registration-form-label">
+                <input type="number" name="PagesNumber" class="Registration-form-input" placeholder="تعداد صفحه" required>
+            </label>
+            
+            <label class="Registration-form-label">
+                <input type="number" name="Price" class="Registration-form-input" placeholder="قیمت" required>
+            </label>
+
+            <label class="Registration-form-label-img">
+                تصویر پروفایل:
+                <input name="Image" type="file" class="Registration-form-input-img" accept="image/*">
+            </label>
+
+            <label for="Description" class="Registration-form-label">
+                <textarea name="Description" class="Registration-form-textarea" placeholder="توضیحات" required></textarea>
+            </label>
+
+            <input type="submit" class="Registration-form-button" value="افزودن" />
+
+        </form>
+
+        @if (!Model.IsSuccess)
+        {
+            <p class="form-error-message">@Model.Message</p>
+        }
+    </div>
+</div>

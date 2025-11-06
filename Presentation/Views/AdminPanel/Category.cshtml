@@ -1,0 +1,54 @@
+﻿@using Domain.Enums
+@model List<Domain.DTOs.CategoryInfoDTO>
+@{
+    Layout = "_PanelLayout";
+}
+<div class="main-content">
+    <div class="users-header">
+        <h1>لیست دسته بندی</h1>
+        <a asp-controller="AdminPanel" asp-action="AddCategory" class="btn-add-user">افزودن دسته بندی</a>
+    </div>
+    @if (Model.Count == 0)
+    {
+        <div class="dashboard-box">
+            🤨
+            <br>
+            هیچ دسته بندی یافت نشد
+        </div>
+    }
+    else
+    {
+        <table class="users-table">
+            <thead>
+                <tr>
+                    <th>ایموجی</th>
+                    <th>شناسه</th>
+                    <th>عنوان</th>
+                    <th>توضیحات</th>
+                    <th>رنگ پس زمینه</th>
+                    <th>عملیات</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var u in Model)
+                {
+                    <tr>
+                        <td>@u.Id</td>
+                        <td>@u.EmojiIcon</td>
+                        <td>@u.Title</td>
+                        <td>@u.Description</td>
+                        <td style="text-align: center; vertical-align: middle;">
+                            <div style="width: 20px; height: 20px; background-color: @u.BackgroundColorHEX; border-radius: 50%; margin: auto;"></div>
+                        </td>
+                       
+                        <td class="actions">
+                            <a asp-controller="AdminPanel" asp-action="EditCategory" asp-route-id="@u.Id" class="btn-edit">ویرایش</a>
+                            <a asp-controller="AdminPanel" asp-action="DeleteCategory" asp-route-id="@u.Id" class="btn-delete">حذف</a>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

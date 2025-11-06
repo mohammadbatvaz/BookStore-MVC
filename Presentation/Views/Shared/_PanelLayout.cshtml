@@ -9,7 +9,22 @@
 </head>
 
 <body>
+    <div class="sidebar">
+        <ul>
+            <li><a asp-controller="AdminPanel" asp-action="Dashboard">🏠 داشبورد</a></li>
+            <li><a asp-controller="AdminPanel" asp-action="Users">👥 مدیریت کاربران</a></li>
+            <li><a asp-controller="AdminPanel" asp-action="Category">📂 مدیریت دسته‌بندی‌ها</a></li>
+            <li><a asp-controller="AdminPanel" asp-action="Books">📚 مدیریت کتاب ها</a></li>
+        </ul>
 
+        <div class="sidebar-footer">
+            <div class="username">کاربر: <strong>@ViewBag.FullName</strong></div>
+            <div class="footer-links">
+                <a asp-controller="Home" asp-action="Index">🛍 فروشگاه</a>
+                <a asp-controller="Authentication" asp-action="Logout">🚪 خروج</a>
+            </div>
+        </div>
+    </div>
 @RenderBody()
 
 </body>
