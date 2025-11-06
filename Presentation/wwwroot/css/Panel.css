@@ -109,9 +109,6 @@ h1 {
     height: 80vh;
 }
 
-
-/*Start User List Style*/
-
 .users-header {
     display: flex;
     justify-content: space-between;
@@ -124,6 +121,25 @@ h1 {
     font-size: 28px;
     color: #2f3542;
 }
+
+.form-error-message {
+    font-family: vazir;
+    color: #f31c1c;
+    margin: 0;
+    padding-top: 25px;
+    text-align: center;
+}
+
+.form-Success-message {
+    font-family: vazir;
+    color: #28a745;
+    margin: 0;
+    padding-top: 25px;
+    text-align: center;
+}
+
+
+/*Start User List Style------------------------------------------------------------------------------*/
 
 .btn-add-user {
     padding: 8px 16px;
@@ -217,4 +233,82 @@ h1 {
 .btn-toggle:hover {
     background-color: #d4ac0d;
 }
-/*End User List style*/
+/*End User List style----------------------------------------------------------------------------------*/
+
+
+
+
+
+/* Registration Page Style --------------------------------------------------------------------------- */
+
+.Registration-form-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px #adb4bb;
+    width: 400px;
+    margin: 50px auto;
+    margin-bottom: 10px;
+}
+
+.Registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.Registration-form-h2 {
+    font-family: vazir-Medium;
+    text-align: center;
+    color: #3c404e;
+    margin: 0;
+}
+
+.Registration-form-label {
+    font-family: vazir-Medium;
+    color: #3c404e;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.Registration-form-input {
+    font-family: vazir;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.Registration-form-label-img {
+    font-family: vazir-Medium;
+    color: #3c404e;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Registration-form-input-img {
+    font-family: vazir;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    border-radius: 5px;
+    width: 70%;
+    cursor: pointer;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+.Registration-form-button {
+    font-family: vazir-Medium;
+    background-color: #3498db;
+    border: 1px solid #3498db;
+    color: #ffffff;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* End of Registration Page Styles */

@@ -13,6 +13,8 @@ namespace Infrastructure.Configurations
 
             builder.HasIndex(u => u.UserName).IsUnique();
 
+            builder.HasQueryFilter(u => !u.SoftDelete);
+
             builder.Property(u => u.FirstName).IsRequired().HasMaxLength(100).IsUnicode();
             builder.Property(u => u.LastName).IsRequired().HasMaxLength(100).IsUnicode();
             builder.Property(u => u.Email).IsRequired().HasMaxLength(255);
@@ -20,7 +22,7 @@ namespace Infrastructure.Configurations
             builder.Property(u => u.PasswordHash).IsRequired().HasMaxLength(60);
             builder.Property(u => u.IsActive).HasDefaultValue(false);
             builder.Property(u => u.Role).HasDefaultValue(UserRoleEnum.User);
-            builder.Property(u => u.ProfileImageUrl).HasDefaultValue("/Image/Profile/default.jpg");
+            builder.Property(u => u.ProfileImageUrl).HasDefaultValue(@"\Image\Profile\default.jpg");
         }
     }
 }

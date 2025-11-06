@@ -1,0 +1,65 @@
+﻿@{
+    Layout = "_PanelLayout";
+}
+<div class="sidebar">
+    <ul>
+        <li><a asp-controller="AdminPanel" asp-action="Dashboard">🏠 داشبورد</a></li>
+        <li><a href="/AdminPanel/Users">👥 مدیریت کاربران</a></li>
+        <li><a href="/AdminPanel/Categories">📂 مدیریت دسته‌بندی‌ها</a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+        <div class="username">کاربر: <strong>@ViewBag.FullName</strong></div>
+        <div class="footer-links">
+            <a asp-controller="Home" asp-action="Index">🛍 فروشگاه</a>
+            <a asp-controller="Authentication" asp-action="Logout">🚪 خروج</a>
+        </div>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="users-header">
+        <h1>افزودن کاربر جدید</h1>
+    </div>
+    <div class="Registration-form-container">
+        <form class="Registration-form"
+              asp-controller="AdminPanel"
+              asp-action="Registration"
+              enctype="multipart/form-data"
+              method="post">
+
+            <label for="FirstName" class="Registration-form-label">
+                <input type="text" name="FirstName" class="Registration-form-input" placeholder="نام" required>
+            </label>
+
+            <label for="LastName" class="Registration-form-label">
+                <input type="text" name="LastName" class="Registration-form-input" placeholder="نام خانوادگی" required>
+            </label>
+
+            <label for="UserName" class="Registration-form-label">
+                <input type="text" name="UserName" class="Registration-form-input" placeholder="نام کاربری" required>
+            </label>
+
+            <label for="Password" class="Registration-form-label">
+                <input type="password" name="Password" class="Registration-form-input" placeholder="رمز عبور" required>
+            </label>
+
+            <label for="Email" class="Registration-form-label">
+                <input type="text" name="Email" class="Registration-form-input" placeholder="ایمیل" required>
+            </label>
+        
+            <label class="Registration-form-label-img"> تصویر پروفایل:
+                <input name="ProfileImageFile" type="file" class="Registration-form-input-img" accept="image/*">
+            </label>
+        
+            <input type="submit" class="Registration-form-button" value="ثبت نام"/>
+
+        </form>
+
+        @if(!Model.IsSuccess)
+        {
+            <p class="form-error-message">@Model.Message</p>
+        }
+
+    </div>
+</div>

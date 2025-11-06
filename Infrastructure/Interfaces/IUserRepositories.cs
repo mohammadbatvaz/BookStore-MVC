@@ -11,5 +11,15 @@ namespace Infrastructure.Interfaces
         UserFullNameDTO? GetUserFullNameById(int Id);
 
         List<UserDataDTO> GetAllUsers();
+
+        void ActiveUser(int userId);
+
+        void DeActiveUser(int userId);
+
+        void UserSoftDelete(int userId, int adminId);
+
+        UserDataDTO GetUserInfoById(int userId);
+
+        void UpdateUser(UserEditedInfoDTO userNewInfo, int adminId);
     }
 }

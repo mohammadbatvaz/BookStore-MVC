@@ -6,7 +6,7 @@
 <div class="sidebar">
     <ul>
         <li><a asp-controller="AdminPanel" asp-action="Dashboard">🏠 داشبورد</a></li>
-        <li><a href="/AdminPanel/Users">👥 مدیریت کاربران</a></li>
+        <li><a asp-controller="AdminPanel" asp-action="Users">👥 مدیریت کاربران</a></li>
         <li><a href="/AdminPanel/Categories">📂 مدیریت دسته‌بندی‌ها</a></li>
     </ul>
 
@@ -22,7 +22,7 @@
 <div class="main-content">
     <div class="users-header">
         <h1>لیست کاربران</h1>
-        <a href="/AdminPanel/AddUser" class="btn-add-user">افزودن کاربر</a>
+        <a asp-controller="AdminPanel" asp-action="Registration" class="btn-add-user">افزودن کاربر</a>
     </div>
     @if(Model.Count == 0)
     {
@@ -80,9 +80,13 @@
                             break;
                     }
                     <td class="actions">
-                        <a href="/AdminPanel/EditUser/@u.Id" class="btn-edit">ویرایش</a>
-                        <a href="/AdminPanel/DeleteUser/@u.Id" class="btn-delete">حذف</a>
-                        <a href="/AdminPanel/ToggleStatus/@u.Id" class="btn-toggle">تغییر وضعیت</a>
+                        <a asp-controller="AdminPanel" asp-action="EditUserInfo" asp-route-id="@u.Id" class="btn-edit">ویرایش</a>
+                        @if (u.Role != UserRoleEnum.Admin)
+                        {
+                            <a asp-controller="AdminPanel" asp-action="Delete" asp-route-id="@u.Id" class="btn-delete">حذف</a>
+                            <a asp-controller="AdminPanel" asp-action="ChangeStatus"
+                                   asp-route-id="@u.Id" asp-route-changeStatusTo="@(!u.IsActive)" class="btn-toggle">تغییر وضعیت</a>
+                        }
                     </td>
 
                 </tr>

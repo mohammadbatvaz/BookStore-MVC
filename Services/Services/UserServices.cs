@@ -12,7 +12,7 @@ namespace Services.Services
         IFileService fileService,
         IUserRepositories _userRepo) : IUserServices
     {
-        public Result<bool> AddNewUser(RegistrationDataViewModel newUser)
+        public Result<bool> AddNewUser(RegistrationDataViewModel newUser, int createdBy = 0, bool isActive = false)
         {
             long maxFileSize = 300 * 1024;
 
@@ -33,10 +33,10 @@ namespace Services.Services
                 LastName = newUser.LastName,
                 Email = newUser.Email,
                 UserName = newUser.UserName,
-                IsActive = false,
+                IsActive = isActive,
                 PasswordHash = authServices.ToMd5Hex(newUser.Password),
                 Role = UserRoleEnum.User,
-
+                CreatedBy = createdBy,
                 ProfileImageUrl = newUser.ProfileImageFile is not null 
                     ? fileService.Upload(newUser.ProfileImageFile, "Profile") 
                     : null
@@ -65,6 +65,49 @@ namespace Services.Services
         public List<UserDataDTO> AllUsersList()
         {
             return _userRepo.GetAllUsers();
+        }
+
+        public void ChangeUserStatus(int userID, bool newStatus)
+        {
+            if(newStatus)
+                _userRepo.ActiveUser(userID);
+            else
+                _userRepo.DeActiveUser(userID);
+        }
+
+        public void UserSoftDelete(int userId, int adminId)
+        {
+            _userRepo.UserSoftDelete(userId, adminId);
+        }
+
+        public UserDataDTO GetUserInfo(int id)
+        {
+            return _userRepo.GetUserInfoById(id);
+        }
+
+        public Result<string> EditUserInfo(UserEditedInfoDTO userNewInfo, int adminId)
+        {
+            long maxFileSize = 300 * 1024;
+
+            if (userNewInfo.FirstName.Length > 100)
+                return Result<string>.Failure("نام شما نباید بیشتر از 100 کاراکتر باشد");
+            if (userNewInfo.LastName.Length > 100)
+                return Result<string>.Failure("نام خانوادگی شما نباید بیشتر از 100 کاراکتر باشد");
+            if (userNewInfo.Email.Length > 255)
+                return Result<string>.Failure("ایمیل شما نباید بیشتر از 255 کاراکتر باشد");
+            if (userNewInfo.NewProfileImage is not null && userNewInfo.NewProfileImage.Length > maxFileSize)
+                return Result<string>.Failure("حجم تصویر پروفایل شما نباید بیشتر 300 کیلوبایت باشد");
+
+            if (userNewInfo.NewProfileImage is not null)
+            {
+                if(!userNewInfo.CurrentProfileImageUrl.Contains("default.jpg"))
+                    fileService.Delete(userNewInfo.CurrentProfileImageUrl);
+
+                userNewInfo.CurrentProfileImageUrl = fileService.Upload(userNewInfo.NewProfileImage, "Profile");
+            }
+
+            _userRepo.UpdateUser(userNewInfo, adminId);
+            return Result<string>.Success("اطلاعات با موفقیت بروز شد");
         }
     }
 }

@@ -1,9 +1,4 @@
 ﻿using Domain.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.DTOs
 {
@@ -17,5 +12,6 @@ namespace Domain.DTOs
         public bool IsActive { get; set; }
         public string? ProfileImageUrl { get; set; }
         public UserRoleEnum Role { get; set; }
+        public int? CreatedBy { get; set; } 
     }
 }

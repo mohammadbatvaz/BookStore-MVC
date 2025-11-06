@@ -1,0 +1,66 @@
+﻿@model Domain.Entities.Result<Domain.ViewModel.UserEditableInfoViewModel>
+@{
+    Layout = "_PanelLayout";
+}
+<div class="sidebar">
+    <ul>
+        <li><a asp-controller="AdminPanel" asp-action="Dashboard">🏠 داشبورد</a></li>
+        <li><a href="/AdminPanel/Users">👥 مدیریت کاربران</a></li>
+        <li><a href="/AdminPanel/Categories">📂 مدیریت دسته‌بندی‌ها</a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+        <div class="username">کاربر: <strong>@ViewBag.FullName</strong></div>
+        <div class="footer-links">
+            <a asp-controller="Home" asp-action="Index">🛍 فروشگاه</a>
+            <a asp-controller="Authentication" asp-action="Logout">🚪 خروج</a>
+        </div>
+    </div>
+</div>
+
+<div class="main-content">
+    <div class="users-header">
+        <h1>ویرایش مشخصات</h1>
+    </div>
+    <div class="Registration-form-container">
+        <form class="Registration-form"
+              asp-controller="AdminPanel"
+              asp-action="EditUserInfo"
+              enctype="multipart/form-data"
+              method="post">
+
+            <input type="hidden" asp-for="Data.Id" />
+            <input type="hidden" asp-for="Data.CurrentProfileImageUrl" />
+
+            <label for="FirstName" class="Registration-form-label">
+                <input type="text" asp-for="Data.FirstName" class="Registration-form-input" required>
+            </label>
+
+            <label for="LastName" class="Registration-form-label">
+                <input type="text" asp-for="Data.LastName" class="Registration-form-input" required>
+            </label>
+
+            <label for="Email" class="Registration-form-label">
+                <input type="text" asp-for="Data.Email" class="Registration-form-input" required>
+            </label>
+            
+            <label class="Registration-form-label" > تصویر فعلی:
+                <img src="@Model.Data.CurrentProfileImageUrl" alt="Profile" width="100" height="100" />
+            </label>
+
+            <label class="Registration-form-label-img">
+                تصویر پروفایل:
+                <input asp-for="Data.NewProfileImage" type="file" class="Registration-form-input-img" accept="image/*">
+            </label>
+
+            <input type="submit" class="Registration-form-button" value="ویرایش" />
+
+        </form>
+
+        @if (!Model.IsSuccess)
+        {
+            <p class="form-error-message">@Model.Message</p>
+        }
+
+    </div>
+</div>
