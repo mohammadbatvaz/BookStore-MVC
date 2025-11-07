@@ -15,6 +15,7 @@ namespace Infrastructure.Repositories
         public List<BookSummaryInfoDTO> GetNewBooksSummaryInfoList(int numberOfBook)
         {
             return _db.Books
+                .AsNoTracking()
                 .OrderByDescending(b => b.CreatedAt)
                 .Take(numberOfBook)
                 .Select(b => new BookSummaryInfoDTO
@@ -32,6 +33,7 @@ namespace Infrastructure.Repositories
         public List<BookInfoDTO> GetAllBookList()
         {
             return _db.Books
+                .AsNoTracking()
                 .Include(b => b.Category)
                 .Select(b => new BookInfoDTO
                 {

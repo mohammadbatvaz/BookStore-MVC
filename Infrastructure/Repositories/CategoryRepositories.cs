@@ -9,7 +9,9 @@ namespace Infrastructure.Repositories
     {
         public List<CategoryInfoDTO> GetAllCategoryInfo()
         {
-            return _db.Categories.Select(c => new CategoryInfoDTO()
+            return _db.Categories
+                .AsNoTracking()
+                .Select(c => new CategoryInfoDTO()
             {
                 Id = c.Id,
                 Title = c.Title,
@@ -28,6 +30,7 @@ namespace Infrastructure.Repositories
         public CategoryInfoDTO? GetCategoryById(int Id)
         {
             return _db.Categories
+                .AsNoTracking()
                 .Where(u => u.Id == Id)
                 .Select(u => new CategoryInfoDTO()
                 {
@@ -65,6 +68,7 @@ namespace Infrastructure.Repositories
         public List<CategorySummaryInfoDTO> GetAllCategorySummaryInfo()
         {
             return _db.Categories
+                .AsNoTracking()
                 .Where(c => !c.SoftDelete)
                 .Select(c => new CategorySummaryInfoDTO()
                 {

@@ -27,6 +27,7 @@ namespace Infrastructure.Repositories
         public CurrentUserDTO? UserAuthentication(string username, string passwordHash)
         {
             return _db.Users
+                .AsNoTracking()
                 .Where(u => u.UserName == username && u.PasswordHash == passwordHash)
                 .Select(u => new CurrentUserDTO
                 {
@@ -40,6 +41,7 @@ namespace Infrastructure.Repositories
         public UserFullNameDTO? GetUserFullNameById(int Id)
         {
             return _db.Users
+                .AsNoTracking()
                 .Where(u => u.Id == Id)
                 .Select(u => new UserFullNameDTO
                 {
@@ -50,17 +52,19 @@ namespace Infrastructure.Repositories
 
         public List<UserDataDTO> GetAllUsers()
         {
-            return _db.Users.Select(u => new UserDataDTO
-            {
-                Id = u.Id,
-                FirstName = u.FirstName,
-                LastName = u.LastName,
-                Email = u.Email,
-                Username = u.UserName,
-                IsActive = u.IsActive,
-                Role = u.Role,
-                ProfileImageUrl = u.ProfileImageUrl
-            }).ToList();
+            return _db.Users
+                .AsNoTracking()
+                .Select(u => new UserDataDTO
+                {
+                    Id = u.Id,
+                    FirstName = u.FirstName,
+                    LastName = u.LastName,
+                    Email = u.Email,
+                    Username = u.UserName,
+                    IsActive = u.IsActive,
+                    Role = u.Role,
+                    ProfileImageUrl = u.ProfileImageUrl
+                }).ToList();
         }
 
         public void ActiveUser(int userId)
@@ -89,6 +93,7 @@ namespace Infrastructure.Repositories
         public UserDataDTO GetUserInfoById(int userId)
         {
             return _db.Users
+                .AsNoTracking()
                 .Where(u => u.Id == userId)
                 .Select(u => new UserDataDTO()
                 {
